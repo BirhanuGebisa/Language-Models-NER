@@ -6,37 +6,37 @@ from config import cohere_api
 co = cohere.Client(cohere_api())
 
 
-class TestExtract(unittest.TestCase):
-    def test_success(self):
-        examples = [Example(
-            ext="hello my name is John, and I like to play ping pong",
-            entities=[Entity(type="Name", value="John")])]
-        texts = ["hello Roberta, how are you doing today?"]
-
-        extractions = co.unstable_extract(examples, texts)
-
-        self.assertIsInstance(extractions, Extractions)
-        self.assertIsInstance(extractions[0].text, str)
-        self.assertIsInstance(extractions[0].entities, list)
-        self.assertEqual(extractions[0].entities[0].type, "Name")
-        self.assertEqual(extractions[0].entities[0].value, "Roberta")
-
-    def test_empty_text(self):
-        with self.assertRaises(cohere.CohereError):
-            co.unstable_extract(
-                examples=[Example(
-                    text="hello my name is John, and I like to play ping pong",
-                    entities=[Entity(type="Name", value="John")])],
-                    texts=[""])
-
-    def test_empty_entities(self):
-        with self.assertRaises(cohere.CohereError):
-            co.unstable_extract(
-                examples=[Example(
-                    text="hello my name is John, and I like to play ping pong",
-                    entities=[])],
-                    texts=["hello Roberta, how are you doing today?"])
-
+#class TestExtract(unittest.TestCase):
+#    def test_success(self):
+#        examples = [Example(
+#            ext="hello my name is John, and I like to play ping pong",
+#            entities=[Entity(type="Name", value="John")])]
+#        texts = ["hello Roberta, how are you doing today?"]
+#
+#        extractions = co.unstable_extract(examples, texts)
+#
+#        self.assertIsInstance(extractions, Extractions)
+#        self.assertIsInstance(extractions[0].text, str)
+#        self.assertIsInstance(extractions[0].entities, list)
+#        self.assertEqual(extractions[0].entities[0].type, "Name")
+#        self.assertEqual(extractions[0].entities[0].value, "Roberta")
+#
+#    def test_empty_text(self):
+#        with self.assertRaises(cohere.CohereError):
+#            co.unstable_extract(
+#                examples=[Example(
+#                    text="hello my name is John, and I like to play ping pong",
+#                    entities=[Entity(type="Name", value="John")])],
+#                    texts=[""])
+#
+#    def test_empty_entities(self):
+#        with self.assertRaises(cohere.CohereError):
+#            co.unstable_extract(
+#                examples=[Example(
+#                    text="hello my name is John, and I like to play ping pong",
+#                    entities=[])],
+#                    texts=["hello Roberta, how are you doing today?"])
+#
 #     def test_varying_amount_of_entities(self):
 #         examples = [
 #             Example(
