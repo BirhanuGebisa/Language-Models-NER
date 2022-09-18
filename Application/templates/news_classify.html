@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel='stylesheet' type="text/css" href = "{{ url_for('static', filename = 'bootstrap.min.css') }}" />
+    </head>
+    <body class="p-3 m-0 border-0 bd-example">
+        
+        <h1>News page</h1>
+        <form method="GET" action="/bnewscore">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <textarea class="form-control" id="title" name='title' rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <textarea class="form-control" id="desc" name='desc' rows="3"></textarea>
+          </div>
+          <div class="col-auto">
+            <input type="submit" class="btn btn-primary mb-3" value="Predict"/>
+          </div>
+        </form>
+        {% if prediction %}
+      
+        <div class="alert alert-primary" role="alert">
+            {{ prediction }}
+        </div>
+        {% endif %}
+    </body>
+</html>
