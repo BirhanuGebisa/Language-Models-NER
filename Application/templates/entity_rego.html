@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel='stylesheet' type="text/css" href = "{{ url_for('static', filename = 'bootstrap.min.css') }}" />
+    </head>
+    <body class="p-3 m-0 border-0 bd-example">
+        
+        <h1>Jobs page</h1>
+        <form method="GET" action="/jdentities">
+        <div class="mb-3">
+            <label for="document" class="form-label">Title</label>
+            <textarea class="form-control" id="document" name='document' rows="3"></textarea>
+          </div>
+          <div class="col-auto">
+            <input type="submit" class="btn btn-primary mb-3" value="Predict"/>
+          </div>
+        </form>
+        {% if prediction %}
+        <div class="alert alert-primary" role="alert">
+            {{ prediction }}
+        </div>
+        {% endif %}
+    </body>
+</html>
